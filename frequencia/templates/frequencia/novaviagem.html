@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Viagens</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <nav class="nav-bar">
+                <div class="logo">
+                    <a>GoCheck 📍</a>
+                </div>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="viagens.html">Início</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="form-card">
+                <h2>Cadastrar Nova Viagem</h2>
+                <div class="form-field">
+                    <label for="trip">Digite o nome da viagem</label>
+                    <input id="trip" type="text" placeholder="Ex: Excursão de Sete Cidades" required>
+                </div>
+                <div class="form-field">
+                    <label for="descricao">Digite a descrição da viagem</label>
+                    <textarea id="descricao" name="descricao" rows="4" placeholder="Escreva aqui a descrição da viagem, com pontos turisticos e de parada" required></textarea>
+                </div>
+                <div class="form-2parts">
+                    <div class="form-field">
+                        <label for="inicity">Digite a cidade de início da viagem</label>
+                        <input id="inicity" type="text" placeholder="Escreva aqui a cidade de início" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="endcity">Digite a cidade de término da viagem</label>
+                        <input id="endcity" type="text" placeholder="Escreva aqui a cidade de término" required>
+                    </div>
+                </div>
+                <div class="form-2parts">
+                    <div class="form-field">
+                        <label for="inidate">Selecione a data de início da viagem</label>
+                        <input id="inidate" type="date" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="enddate">Selecione a data de término da viagem</label>
+                        <input id="enddate" type="date" required>
+                    </div>
+                </div>
+                <div class="form-2parts">
+                    <div class="form-field">
+                        <label for="initime">Digite o horário de saída da viagem</label>
+                        <input id="initime" type="time" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="endtime">Digite o horário de chegada da viagem</label>
+                        <input id="endtime" type="time" required>
+                    </div>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit">Criar</button>
+                    <a href="viagens.html" class="button">Cancelar</a>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

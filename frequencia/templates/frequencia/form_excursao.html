@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Nova Viagem - GoCheck</title>
+    <link rel="stylesheet" href="{% static 'frequencia/style.css' %}">
+</head>
+<body>
+    <main>
+        <div class="card-trip" style="max-width: 500px; margin: 50px auto; padding: 20px;">
+            <h2>Cadastrar Nova Viagem</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="button">Salvar Viagem</button>
+            </form>
+            <br>
+            <a href="{% url 'lista_excursoes' %}" style="color: white;">Voltar para a lista</a>
+        </div>
+    </main>
+</body>
+</html>

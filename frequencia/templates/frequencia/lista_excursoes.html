@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>GoCheck - Viagens</title>
+    <link rel="stylesheet" href="{% static 'frequencia/style.css' %}">
+</head>
+<body>
+        <header>
+            <nav class="nav-bar">
+                <div class="logo">
+                    <a>GoCheck 📍</a>
+                </div>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="viagens">
+                {% for excursao in excursoes %}
+                <div class="card-trip">
+                    <h2>{{ excursao.nome }}</h2>
+                    <p>{{ excursao.descricao }}</p>
+                    <h6>99 Passageiros</h6>
+                    <a href="{% url 'detalhe_excursao' excursao.pk %}" class="button">Ver Viagem</a>
+                </div>
+                {% empty %}
+                <p style="color: white; padding: 20px;">Nenhuma viagem cadastrada.</p>
+                {% endfor %}
+            </div>
+
+            <br>
+
+            <div class="n-trip">
+                <a href="{% url 'criar_excursao' %}" class="button">Adicionar Nova Viagem</a>
+            </div>
+        </main>
+    </body>
+</html>

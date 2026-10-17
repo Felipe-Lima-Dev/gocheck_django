@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - GoCheck</title>
+    <link rel="stylesheet" href="{% static 'frequencia/stylelogin.css' %}">
+</head>
+<body>
+    <main class="login">
+        <div class="card-log">
+            <h2>Entre em sua conta</h2>
+            
+            <form method="POST">
+                {% csrf_token %}
+                <div class="log-field">
+                    <label for="user">Nome de usuário</label>
+                    <input type="text" id="user" name="username" placeholder="Nome de usuário">
+                </div>
+                
+                <div class="log-field">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" placeholder="Senha">
+                </div>
+
+                <button type="submit" class="btn-entrar">Entrar</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
