@@ -8,25 +8,48 @@
     <link rel="stylesheet" href="{% static 'frequencia/stylelogin.css' %}">
 </head>
 <body>
-    <main class="login">
-        <div class="card-log">
-            <h2>Entre em sua conta</h2>
-            
-            <form method="POST">
-                {% csrf_token %}
-                <div class="log-field">
-                    <label for="user">Nome de usuário</label>
-                    <input type="text" id="user" name="username" placeholder="Nome de usuário">
-                </div>
+
+    <div class="login-container">
+        <h2>Entre em sua conta</h2>
+
+        {% if erro %}
+            <p style="color: red; text-align: center; margin-bottom: 10px;">{{ erro }}</p>
+        {% endif %}
+
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+
+            <div style="display: flex; flex-direction: column; gap: 15px; width: 100%;">
                 
-                <div class="log-field">
-                    <label for="password">Senha</label>
-                    <input type="password" id="password" name="password" placeholder="Senha">
+                <div style="display: flex; flex-direction: column; align-items: flex-start; width: 100%;">
+                    <label for="username" style="margin-bottom: 5px; font-weight: bold;">Nome de usuário</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        placeholder="Nome de usuário" 
+                        required
+                        style="width: 100%; padding: 10px; box-sizing: border-box;"
+                    >
                 </div>
 
-                <button type="submit" class="btn-entrar">Entrar</button>
-            </form>
-        </div>
-    </main>
+                <div style="display: flex; flex-direction: column; align-items: flex-start; width: 100%;">
+                    <label for="password" style="margin-bottom: 5px; font-weight: bold;">Senha</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Senha" 
+                        required
+                        style="width: 100%; padding: 10px; box-sizing: border-box;"
+                    >
+                </div>
+
+                <button type="submit" class="btn" style="margin-top: 10px; width: 100%; padding: 10px; cursor: pointer;">Entrar</button>
+
+            </div>
+        </form>
+    </div>
+
 </body>
 </html>

@@ -2,14 +2,12 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.lista_excursoes, name='lista_excursoes'),
-    path('excursao/nova/', views.criar_excursao, name='criar_excursao'),
-    path('excursao/<int:pk>/', views.detalhe_excursao, name='detalhe_excursao'),
-    path('excursao/<int:pk>/editar/', views.editar_excursao, name='editar_excursao'),
-    path('excursao/<int:pk>/excluir/', views.excluir_excursao, name='excluir_excursao'),
-    
-    path('passageiro/novo/', views.criar_passageiro, name='criar_passageiro'),
-    path('passageiro/<int:pk>/editar/', views.editar_passageiro, name='editar_passageiro'),
-    path('passageiro/<int:pk>/excluir/', views.excluir_passageiro, name='excluir_passageiro'),
+    path('', views.index, name='index'),
     path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'), # <-- Adiciona esta linha
+    path('viagens/', views.relacao_viagens, name='relacao_viagens'),
+    path('viagens/nova/', views.nova_viagem, name='nova_viagem'),
+    path('viagens/<int:pk>/', views.detalhe_viagem, name='detalhe_viagem'),
+    path('passageiros/novo/', views.novo_passageiro, name='novo_passageiro'),
+    path('passageiros/<int:pk>/', views.detalhe_passageiro, name='detalhe_passageiro'),
 ]

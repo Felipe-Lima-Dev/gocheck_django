@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Viagem - GoCheck</title>
+    <link rel="stylesheet" href="{% static 'frequencia/style.css' %}">
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; }
+        .container { max-width: 650px; margin: 0 auto; background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { color: #333; margin-bottom: 20px; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+        .detalhe-grupo { margin-bottom: 15px; }
+        .detalhe-grupo strong { color: #444; display: block; margin-bottom: 4px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .detalhe-grupo p { margin: 0; color: #333; font-size: 15px; background: #f9f9f9; padding: 10px 12px; border-radius: 4px; border: 1px solid #e0e0e0; }
+        .voltar-link { display: inline-block; margin-bottom: 15px; color: #007bff; text-decoration: none; font-weight: bold; }
+        .voltar-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="{% url 'relacao_viagens' %}" class="voltar-link">&larr; Voltar para a Relação de Viagens</a>
+        
+        <h2>{{ viagem.nome }}</h2>
+
+        <div class="detalhe-grupo">
+            <strong>Descrição:</strong>
+            <p>{{ viagem.descricao }}</p>
+        </div>
+
+        <div class="detalhe-grupo">
+            <strong>Cidade de Início:</strong>
+            <p>{{ viagem.cidade_inicio }}</p>
+        </div>
+
+        <div class="detalhe-grupo">
+            <strong>Cidade de Término:</strong>
+            <p>{{ viagem.cidade_termino }}</p>
+        </div>
+
+        <div class="detalhe-grupo">
+            <strong>Data de Início:</strong>
+            <p>{{ viagem.data_inicio }}</p>
+        </div>
+
+        <div class="detalhe-grupo">
+            <strong>Data de Término:</strong>
+            <p>{{ viagem.data_termino }}</p>
+        </div>
+
+        <div class="detalhe-grupo">
+            <strong>Horário de Saída:</strong>
+            <p>{{ viagem.horario_saida }}</p>
+        </div>
+
+        <div class="detalhe-grupo">
+            <strong>Horário de Chegada:</strong>
+            <p>{{ viagem.horario_chegada }}</p>
+        </div>
+    </div>
+
+</body>
+</html>

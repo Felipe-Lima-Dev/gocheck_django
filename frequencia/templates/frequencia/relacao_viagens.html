@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relação de Viagens - GoCheck</title>
+    <link rel="stylesheet" href="{% static 'frequencia/style.css' %}">
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { color: #333; margin-bottom: 20px; }
+        .btn-adicionar { display: inline-block; background-color: #007bff; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-bottom: 20px; font-weight: bold; }
+        .btn-adicionar:hover { background-color: #0056b3; }
+        .viagem-card { border: 1px solid #e0e0e0; padding: 20px; margin-bottom: 15px; border-radius: 6px; background: #fafafa; }
+        .viagem-card h3 { margin-top: 0; color: #007bff; }
+        .viagem-card a { color: #007bff; text-decoration: none; font-weight: bold; }
+        .viagem-card a:hover { text-decoration: underline; }
+        .vazio { color: #666; font-style: italic; }
+        .logout-link { float: right; color: #dc3545; text-decoration: none; font-weight: bold; }
+        .logout-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="{% url 'logout' %}" class="logout-link">Terminar Sessão</a>
+        <h2>Relação de Excursões</h2>
+
+        <div>
+            <a href="{% url 'nova_viagem' %}" class="btn-adicionar">+ Adicionar Nova Viagem</a>
+        </div>
+
+        {% if viagens %}
+            {% for viagem in viagens %}
+                <div class="viagem-card">
+                    <h3>{{ viagem.nome }}</h3>
+                    <p>{{ viagem.descricao }}</p>
+                    <p><strong>Destino:</strong> {{ viagem.destino }}</p>
+                    <a href="{% url 'detalhe_viagem' viagem.pk %}">Ver Detalhes da Viagem &rarr;</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="vazio">Nenhuma excursão cadastrada no momento. Clica no botão acima para adicionar a primeira!</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>
