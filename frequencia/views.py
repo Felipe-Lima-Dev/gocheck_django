@@ -71,3 +71,25 @@ def detalhe_passageiro(request, pk):
     passageiro = get_object_or_404(Passageiro, pk=pk)
     context = {'passageiro': passageiro}
     return render(request, 'frequencia/detalhe_passageiro.html', context)
+
+def editar_viagem(request, pk):
+    """Atualiza os dados de uma excursão existente"""
+    viagem = get_object_or_404(Excursao, pk=pk)
+    if request.method == 'POST':
+        form = ExcursaoForm(request.POST, instance=viagem)
+        if form.is_valid():
+            form.save()
+            return redirect('detalhe_viagem', pk=viagem.pk)
+    else:
+        form = ExcursaoForm(instance=viagem)
+    context = {'form': form, 'viagem': viagem}
+    return render(request, 'frequencia/editar_viagem.html', context)
+
+def deletar_viagem(request, pk):
+    """Elimina uma excursão da base de dados"""
+    viagem = get_object_or_404(Excursao, pk=pk)
+    if request.method == 'POST':
+        viagem.delete()
+        return redirect('relacao_viagens')
+    context = {'viagem': viagem}
+    return render(request, 'frequencia/confirmar_exclusao.html', context)

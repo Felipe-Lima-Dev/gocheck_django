@@ -9,7 +9,13 @@
     <style>
         body { font-family: Arial, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; }
         .container { max-width: 650px; margin: 0 auto; background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        h2 { color: #333; margin-bottom: 20px; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+        .cabecalho-detalhe { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-bottom: 20px; }
+        h2 { color: #333; margin: 0; }
+        .acoes-topo { display: flex; gap: 8px; }
+        .btn-editar { background-color: #ffc107; color: #333; padding: 6px 12px; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 13px; }
+        .btn-editar:hover { background-color: #e0a800; }
+        .btn-deletar { background-color: #dc3545; color: white; padding: 6px 12px; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 13px; }
+        .btn-deletar:hover { background-color: #c82333; }
         .detalhe-grupo { margin-bottom: 15px; }
         .detalhe-grupo strong { color: #444; display: block; margin-bottom: 4px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
         .detalhe-grupo p { margin: 0; color: #333; font-size: 15px; background: #f9f9f9; padding: 10px 12px; border-radius: 4px; border: 1px solid #e0e0e0; }
@@ -22,7 +28,13 @@
     <div class="container">
         <a href="{% url 'relacao_viagens' %}" class="voltar-link">&larr; Voltar para a Relação de Viagens</a>
         
-        <h2>{{ viagem.nome }}</h2>
+        <div class="cabecalho-detalhe">
+            <h2>{{ viagem.nome }}</h2>
+            <div class="acoes-topo">
+                <a href="{% url 'editar_viagem' viagem.pk %}" class="btn-editar">Editar</a>
+                <a href="{% url 'deletar_viagem' viagem.pk %}" class="btn-deletar">Eliminar</a>
+            </div>
+        </div>
 
         <div class="detalhe-grupo">
             <strong>Descrição:</strong>

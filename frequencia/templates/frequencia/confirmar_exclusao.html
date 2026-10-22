@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Viagem - GoCheck</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f7f6; margin: 0; padding: 40px; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .container { max-width: 500px; background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; }
+        h2 { color: #dc3545; margin-bottom: 15px; }
+        p { color: #333; margin-bottom: 25px; font-size: 16px; }
+        .acoes { display: flex; justify-content: center; gap: 15px; }
+        .btn-danger { background-color: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 15px; }
+        .btn-danger:hover { background-color: #c82333; }
+        .btn-secondary { background-color: #6c757d; color: white; text-decoration: none; padding: 10px 20px; border-radius: 4px; font-weight: bold; font-size: 15px; display: inline-block; }
+        .btn-secondary:hover { background-color: #5a6268; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Tem a certeza?</h2>
+        <p>Queres mesmo eliminar a excursão <strong>"{{ viagem.nome }}"</strong>? Esta ação não pode ser desfeita.</p>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="acoes">
+                <button type="submit" class="btn-danger">Sim, Eliminar</button>
+                <a href="{% url 'detalhe_viagem' viagem.pk %}" class="btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
